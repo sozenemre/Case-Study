@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: daily_metrics
+    description: >
+      Daily aggregated metrics per event_date, country, and platform.
+    columns:
+      - name: event_date
+        description: Date of activity
+      - name: country
+        description: User's country
+      - name: platform
+        description: User's platform (e.g., ANDROID, IOS)
+      - name: DAU
+        description: Daily Active Users
+      - name: total_iap_revenue
+        description: Sum of in-app purchase revenue
+      - name: total_ad_revenue
+        description: Sum of ad revenue
+      - name: arpdau
+        description: Average revenue per daily active user ((iap + ad) / dau)
+      - name: matches_started
+        description: Sum of matches started
+      - name: match_per_dau
+        description: Average matches started per DAU (matches_started / dau)
+      - name: win_ratio
+        description: Ratio of victories to matches ended (victory_count / match_end_count)
+      - name: defeat_ratio
+        description: Ratio of defeats to matches ended (defeat_count / match_end_count)
+      - name: server_error_per_dau
+        description: Server connection errors per DAU (server_connection_error / dau)
+
+sources:
+  - name: vertigo_user_analytics
+    database: vertigo-games-case-study
+    schema: vertigo_user_analytics
+    tables:
+      - name: cleaned_user_metrics
+        description: "Raw metrics data, one row per user per day"

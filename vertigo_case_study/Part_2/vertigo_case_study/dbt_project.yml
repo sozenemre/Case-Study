@@ -1,0 +1,10 @@
+name: 'vertigo_case_study'
+version: '1.0.0'
+
+profile: 'vertigo_case_study'
+
+model-paths: ["models"]
+
+models:
+  vertigo_case_study:
+    +materialized: table
